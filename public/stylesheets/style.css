@@ -1,0 +1,47 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+section#chatroom {
+  height: 90vh;
+  background-color: #ececea;
+}
+
+div#messages {
+  height: calc(100% - 35px);
+  padding: 10px;
+  box-sizing:border-box;
+}
+
+input#message {
+  width: 90vw;
+  margin-left: 20px; 
+  margin-bottom: 20px; 
+}
+
+input#send {
+  width: 4vw;
+  margin-left: 7px;
+}
+
+header {
+  background-color: #558c89;
+  text-align: center;
+}
+
+header h1 {
+  padding: 15px;
+  padding-right: 15px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+footer {
+  text-align: center;
+  background-color: #74afad;
+  color: #ffffff;
+  height: 2.9vh;
+  font-size: 18px;
+}

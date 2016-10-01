@@ -1,0 +1,12 @@
+#!/usr/bin/nodejs
+const debug = require('debug')('my-application')
+const app = require('../app')
+const sockets = require('../routes/sockets.js')
+
+app.set('port', process.env.PORT || 3000)
+
+const server = app.listen(app.get('port'), () => {
+  console.log(`Express server listening on port ${server.address().port}`)
+})
+
+sockets.initialize(server)
