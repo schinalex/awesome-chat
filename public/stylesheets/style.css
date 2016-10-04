@@ -1,47 +1,54 @@
+.left {
+  display: flex;
+  justify-content: flex-start;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0px;
-  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+.dialog-title {
+  display: flex;
+  justify-content: center;
+}
+.dialog-title > p {
+  font-size: 1.7em;
+  padding-top: 1em;
+}
+#show-dialog {
+  position: fixed;
+  left: 30px;
+  margin: 20px;
+}
+.message-textfield {
+  display: flex;
+  width: 1000px;
+  justify-content: center;
+}
+#chatroom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
-section#chatroom {
-  height: 90vh;
-  background-color: #ececea;
+#messages {
+  width: 1000px;
 }
-
-div#messages {
-  height: calc(100% - 35px);
-  padding: 10px;
-  box-sizing:border-box;
+.message-field {
+  width: 650px;
 }
-
-input#message {
-  width: 90vw;
-  margin-left: 20px; 
-  margin-bottom: 20px; 
-}
-
-input#send {
-  width: 4vw;
-  margin-left: 7px;
-}
-
-header {
-  background-color: #558c89;
-  text-align: center;
-}
-
-header h1 {
-  padding: 15px;
-  padding-right: 15px;
-  color: #ffffff;
-  margin: 0px;
-}
-
 footer {
-  text-align: center;
-  background-color: #74afad;
-  color: #ffffff;
-  height: 2.9vh;
-  font-size: 18px;
+}
+.footer_message {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

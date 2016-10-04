@@ -2,10 +2,30 @@ doctype html
 html
   block head
     title= title
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='https://code.getmdl.io/1.2.1/material.blue_grey-light_blue.min.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://code.getmdl.io/1.2.1/material.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js')
   body
-    header#banner
-      h1 Awesome Chat
-    block content
-    footer Hope you enjoy your stay here
+    dialog.mdl-dialog
+      .dialog-title
+        p Set up your nickname
+      .mdl-dialog__content
+        form#name-form(action='')
+          .mdl-textfield.mdl-js-textfield
+            label.mdl-textfield__label(for='nickname') Enter you nickame here
+            input#name.mdl-textfield__input(type='text', autocomplete='off')
+          .mdl-dialog__actions
+            input#set-name.mdl-button(type='submit', value='Set Name')
+            button.mdl-button.close(type="button") Cancel
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header#banner.mdl-layout__header
+        .mdl-layout__header-row.center
+          span.mdl-layout-title Awesome Chat
+      .mdl-layout__content
+        block content
+      footer.mdl-mini-footer
+        .footer_message
+          .mdl-logo Hope you enjoy your stay here!

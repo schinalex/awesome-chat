@@ -6,6 +6,12 @@ append head
 
 block content
   section#chatroom
-    #messages
-    input#message(type='text', placeholder='Enter your message here')
-    input#send(type='button', value='Send')
+    button#show-dialog.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type="button") Select a nickname
+    ul#messages.mdl-list
+    form#message-form.message-textfield
+      .mdl-textfield.mdl-js-textfield.message-field.left
+        label.mdl-textfield__label(for='message') Enter your message here...
+        input#message.mdl-textfield__input(type='text', autocomplete='off')
+      .mdl-textfield.mdl-js-textfield.right
+        input#send.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent(type='submit', value='Send')
+    

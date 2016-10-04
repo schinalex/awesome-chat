@@ -1,25 +1,34 @@
 'use strict'
 
- const SocketIO = require('socket.io')
+const SocketIO = require('socket.io')
 
 exports.initialize = server => {
   let io = SocketIO.listen(server)
   io.on('connection', socket => {
-    console.log('Heu!')
     socket.send(JSON.stringify({
-        type: 'serverMessage',
-        message: 'Welcome to the most interesting chat room on earth!!!'
-      }))
+      type: 'serverMessage',
+      message: 'Welcome to the most interesting chat room on earth!!!'
+    }))
 
     socket.on('message', message => {
-      console.log('Got it!')
-      if (message.type == 'userMessage') {
-        message = JSON.parse(message)
+      message = JSON.parse(message)
+      if (message.type === 'userMessage') {
+        let nickname = socket.nickname
+        message.user = nickname || 'Anonymous'
         socket.broadcast.send(JSON.stringify(message))
         message.type = 'myMessage'
         socket.send(JSON.stringify(message))
-        console.log(message)
+        console.log(`${message.user}: ${message.message}`)
       }
+    })
+
+    socket.on('set_name', data => {
+      socket.nickname = data.name
+      socket.emit('name_set', data)
+      socket.send(JSON.stringify({
+        type: 'serverMessage',
+        message: `Hello ${data.name}!`
+      }))
     })
   })
 }
