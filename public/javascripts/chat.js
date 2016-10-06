@@ -20,6 +20,7 @@ const makeMessage = (user, message) => {
 }
 let displayMessage = (user, message) => {
   $('#messages').append(makeMessage(user,message))
+  $('#messages').scrollTop(999999999999)
 }
 let roomName = decodeURI(
   (RegExp('room' + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]
