@@ -2,6 +2,7 @@
 
 const chatInfra = io.connect('/chat_infra')
 const chatCom = io.connect('/chat_com')
+
 const makeMessage = (user, message) => {
   return `<ul class="mdl-list">
     <li class="mdl-list__item mdl-list__item--three-line">
@@ -18,19 +19,18 @@ const makeMessage = (user, message) => {
     </li>
   </ul>`
 }
-let displayMessage = (user, message) => {
-  $('#messages').append(makeMessage(user,message))
+const displayMessage = (user, message) => {
+  $('#messages').append(makeMessage(user, message))
   $('#messages').scrollTop(999999999999)
 }
 let roomName = decodeURI(
-  (RegExp('room' + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]
+  (RegExp('room' + '=' + '(.+?)(&|$)').exec(location.search) || [null, null])[1]
 )
 if (roomName) {
   chatInfra.on('name_set', data => {
     chatInfra.emit('join_room', {name: roomName})
     chatInfra.on('user_entered', data => {
-      data = JSON.parse(data)
-      displayMessage('Server', `Say hello to ${data.name}!`)
+      displayMessage('Server', `Say hello to ${data.name}, who just joined the chat!`)
     })
     chatInfra.on('message', data => {
       data = JSON.parse(data)
@@ -42,14 +42,12 @@ if (roomName) {
     displayMessage(data.user, data.message)
   })
 }
+
 $(() => {
   let dialog = document.querySelector('dialog')
-  let showDialogButton = document.querySelector('#show-dialog')
-  if (! dialog.showModal) dialogPolyfill.registerDialog(dialog)
+  if (!dialog.showModal) dialogPolyfill.registerDialog(dialog)
   dialog.showModal()
-  // showDialogButton.addEventListener('click', () => dialog.showModal())
   dialog.querySelector('.close').addEventListener('click', () => dialog.close())
-
   $('#name-form').submit(() => {
     let name = $('#name').val()
     if (name) {

@@ -31,7 +31,7 @@ body {
   width: 1000px;
   justify-content: center;
 }
-#chatroom {
+#chat-room {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,7 +62,7 @@ body {
   right: 40px;
   bottom: 80px;
 }
-.footer_message {
+.footer-message {
   display: flex;
   justify-content: center;
   width: 100%;

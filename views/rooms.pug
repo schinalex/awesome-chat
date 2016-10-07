@@ -1,0 +1,20 @@
+extends layout
+
+append head
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/rooms.js')
+
+block content
+    section#chat-rooms
+      #new-room
+        span Start a new Room
+        form#room-form.message-textfield
+          .mdl-textfield.mdl-js-textfield.message-field.left
+            label.mdl-textfield__label(for='message') Enter your message here...
+            input#new-room-name.mdl-textfield__input(type='text', autocomplete='off')
+          .mdl-textfield.mdl-js-textfield.right
+            input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent(type='submit', value='Start')
+        #all-rooms
+            #header Or join a room
+            ul#rooms-list
+ 
